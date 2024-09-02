@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GameToDo</string>
+    <string name="cancel">Cancel</string>
+    <string name="create_a_task">Create a task</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+</resources>

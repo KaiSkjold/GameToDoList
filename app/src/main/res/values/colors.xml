@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="light_grey">#D3D3D3</color>
+    <color name="purple_tint"> #20A020F0</color>
+    <color name="rose">#450a28</color>
+    <color name="pink_rose">#ff1d8d</color>
+    <color name="ocean_green">#005451</color>
+    <color name="blue_green">#406d73</color>
+    <color name="cornflower_blue">#6395ee</color>
+</resources>
