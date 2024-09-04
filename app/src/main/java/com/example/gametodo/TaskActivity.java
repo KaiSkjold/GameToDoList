@@ -16,17 +16,24 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONObject;
+
 import java.lang.reflect.Type;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class TaskActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
+    String url = "http://192.168.0.104:8989/todoitem";
 
     private static final int REQUEST_CODE_CREATE_TASK = 1;
     ListView taskList;
@@ -89,7 +96,7 @@ public class TaskActivity extends AppCompatActivity {
 
             ToDoItem newTask = (ToDoItem) data.getSerializableExtra("newTask");
             if (newTask != null) {
-
+                createToDoItem(newTask);
                 tasks.add(newTask);
                 myAdapter.notifyDataSetChanged();
             }
@@ -97,8 +104,6 @@ public class TaskActivity extends AppCompatActivity {
     }
 
     void getToDoItems() {
-        String url = "http://192.168.0.104:8989/todoitem";
-
         StringRequest stringRequest
                 = new StringRequest(
                 Request.Method.GET, url,
@@ -121,6 +126,32 @@ public class TaskActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
+    void createToDoItem(ToDoItem item){
+//        ToDoItem todoItem = new ToDoItem();
+        ToDoItem toDoItem = item;
 
+        Map<String,String> params = new HashMap<String, String>();
+        params.put("toDoItemObject", new Gson().toJson(toDoItem));
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                url,
+                new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        );
+
+        requestQueue.add(request);
+    }
 
 }
