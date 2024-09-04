@@ -27,7 +27,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
-        android:drawableStart="@drawable/gold_coin"
+        android:drawableEnd="@drawable/gold_coin"
         android:gravity="center"
         android:text="coins"
         android:textSize="20sp"
